@@ -1,0 +1,81 @@
+;;NUMERO DE ELEMNTOS DE UNA LISTA
+(define legth
+  (lambda (ls)
+    (if (null? ls)
+        0
+        (+ 1 (legth (cdr ls)))
+        )
+    )
+  )
+
+;; El SIGUIENTE CODIGO BUSCA X EN UNA LISTA Y RETORNA EL RESTO DE LA LISTA
+(define mev
+  (lambda (x ls)
+    (cond 
+        ((null? ls) '())
+        ((eqv? x (car ls)) (cdr ls))
+        (else (mev x (cdr ls))))))
+    
+;; DEVUELVE LA LISTA EQUIVALENTE A LS ELIMINANDO TODA OCURRENCIA DE X
+(define rem
+  (lambda (x ls)
+  (cond
+    ((null? ls) '())
+    ((eqv? x (car ls)) (rem x (cdr ls)))
+    (else (cons (car ls) (rem x (cdr ls))))
+    )
+    )
+  )
+
+;; Ejemplo factorial sin cola
+(define factorial
+  (lambda (n)
+    (if (= n 0)
+        1
+        (* n (factorial (- n 1)))
+        )
+    )
+  )
+;; FACTORIAL CON COLAS
+(define factorial1
+  (lambda (n)
+    (let fact ((i n) (a 1))
+      (if (= i 0)
+          a
+          (fact (- i 1) (* a i))
+          )
+      )
+    )
+  )
+
+;; SUMATORIA DE COLAS
+(define (sum_n n r)
+  (if (= n 0)
+      r
+      (sum_n (- n 1) (+ n r))
+      )
+  )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
